@@ -49,7 +49,7 @@ function getFinals(data){
 const finalTeams = fifaData.filter((data)=> {return data.Stage === "Final"})
  return finalTeams
 }
-
+console.log(getFinals(fifaData))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -104,8 +104,10 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(/* code here */) {
-   /* code here */
+function getAverageGoals(getFinalsCb) {
+ let sum = getFinalsCb.reduce((previous,item) => {return previous + item["Home Team Goals"] + item["Away Team Goals"]},0)
+ let divide = sum/getFinalsCb.length
+ return divide.toFixed(2)
 }
 
 
